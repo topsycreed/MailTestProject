@@ -77,8 +77,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Mail.feature</DependentUpon>
     </Compile>
+    <Compile Include="LoginPage.cs" />
     <Compile Include="MailSteps.cs" />
     <Compile Include="MailTests.cs" />
+    <Compile Include="MainMailPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

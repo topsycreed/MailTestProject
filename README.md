@@ -1,2 +1,2 @@
 # MailTestProject
-This is a demo test project to improve skills in automatization.
+This is a demo test project to improve skills in test automation. 
