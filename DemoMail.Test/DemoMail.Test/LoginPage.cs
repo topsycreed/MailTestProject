@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TechTalk.SpecFlow;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Support.UI;
-using Xunit;
+﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Support.PageObjects;
 
 namespace DemoMail.Test
 {
@@ -16,9 +8,26 @@ namespace DemoMail.Test
         private readonly IWebDriver _driver;
         private const string PageURL = @"https://mail.ru/";
 
+        [FindsBy(How = How.Id, Using = "mailbox__login")]
+        private IWebElement _boxName;
+
+        [FindsBy(How = How.Id, Using = "mailbox__login__domain")]
+        private IWebElement _domainName;
+
+        [FindsBy(How = How.Id, Using = "mailbox__password")]
+        private IWebElement _passwordText;
+
+        [FindsBy(How = How.Id, Using = "mailbox__auth__remember__checkbox")]
+        private IWebElement _deselectAuthenticationRemembering;
+
+        [FindsBy(How = How.Id, Using = "mailbox__auth__button")]
+        private IWebElement _submitLogin;
+
         public LoginPage(IWebDriver driver)
         {
             _driver = driver;
+
+            PageFactory.InitElements(_driver, this);
         }
 
         public static LoginPage NavigateTo(IWebDriver driver)
@@ -32,7 +41,7 @@ namespace DemoMail.Test
         {
             set
             {
-                _driver.FindElement(By.Id("mailbox__login")).SendKeys(value);
+                _boxName.SendKeys(value);
             }
         }
 
@@ -40,7 +49,7 @@ namespace DemoMail.Test
         {
             set
             {
-                _driver.FindElement(By.Id("mailbox__login__domain")).SendKeys(value);
+                _domainName.SendKeys(value);
             }
         }
 
@@ -48,18 +57,18 @@ namespace DemoMail.Test
         {
             set
             {
-                _driver.FindElement(By.Id("mailbox__password")).SendKeys(value);
+                _passwordText.SendKeys(value);
             }
         }
 
         public void DeselectAuthenticationRemembering()
         {
-            _driver.FindElement(By.Id("mailbox__auth__remember__checkbox")).Click();
+            _deselectAuthenticationRemembering.Click();
         }
 
         public MainMailPage SubmitLogin()
         {
-            _driver.FindElement(By.Id("mailbox__auth__button")).Click();
+            _submitLogin.Click();
 
             return new MainMailPage(_driver);
         }

@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TechTalk.SpecFlow;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Support.UI;
-using Xunit;
+﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Support.PageObjects;
 
 namespace DemoMail.Test
 {
@@ -15,11 +7,16 @@ namespace DemoMail.Test
     {
         private readonly IWebDriver _driver;
 
+        [FindsBy(How = How.Id, Using = "PH_user-email")]
+        private IWebElement _userEmail;
+
         public MainMailPage(IWebDriver driver)
         {
             _driver = driver;
+
+            PageFactory.InitElements(_driver, this);
         }
 
-        public string UserEmail => _driver.FindElement(By.Id("PH_user-email")).Text;
+        public string UserEmail => _userEmail.Text;
     }
 }
