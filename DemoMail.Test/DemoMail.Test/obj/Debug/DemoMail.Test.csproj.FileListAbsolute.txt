@@ -35,3 +35,5 @@ F:\GitHub\MailTestProject\DemoMail.Test\DemoMail.Test\bin\Debug\xunit.execution.
 F:\GitHub\MailTestProject\DemoMail.Test\DemoMail.Test\obj\Debug\DemoMail.Test.csprojResolveAssemblyReference.cache
 F:\GitHub\MailTestProject\DemoMail.Test\DemoMail.Test\obj\Debug\DemoMail.Test.dll
 F:\GitHub\MailTestProject\DemoMail.Test\DemoMail.Test\obj\Debug\DemoMail.Test.pdb
+F:\GitHub\MailTestProject\DemoMail.Test\DemoMail.Test\bin\Debug\DemoMail.Test.dll.config
+F:\GitHub\MailTestProject\DemoMail.Test\DemoMail.Test\bin\Debug\TechTalk.SpecFlow.dll

@@ -72,11 +72,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mail.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Mail.feature</DependentUpon>
+    </Compile>
+    <Compile Include="MailSteps.cs" />
     <Compile Include="MailTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Mail.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Mail.feature.cs</LastGenOutput>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
