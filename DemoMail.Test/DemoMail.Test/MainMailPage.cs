@@ -17,6 +17,12 @@ namespace DemoMail.Test
             PageFactory.InitElements(_driver, this);
         }
 
-        public string UserEmail => _userEmail.Text;
+        public string UserEmail
+        {
+            get
+            {
+                return _userEmail.Text;
+            }
+        }
     }
 }
