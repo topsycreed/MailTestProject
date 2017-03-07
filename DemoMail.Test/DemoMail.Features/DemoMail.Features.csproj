@@ -67,7 +67,7 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DemoMail-Nunit.Test\DemoMail.Test.csproj">
+    <ProjectReference Include="..\DemoMail.Test\DemoMail.Test.csproj">
       <Project>{8ff95940-125b-4ad3-b4fe-ee54ab3359e2}</Project>
       <Name>DemoMail.Test</Name>
     </ProjectReference>
