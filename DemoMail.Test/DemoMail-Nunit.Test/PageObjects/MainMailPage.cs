@@ -1,7 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 
-namespace DemoMail.Test
+namespace DemoMail_Nunit.Test
 {
     public class MainMailPage
     {
