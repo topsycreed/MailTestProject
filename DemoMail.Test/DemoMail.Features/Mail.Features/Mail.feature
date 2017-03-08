@@ -24,23 +24,23 @@ Scenario: Succsesful login to mail site using resources
 	When I submit my login data
 	Then I should see my e-mail address JohnDoe1990@list.ru in the header of site
 
-@positive
+@positive @not_thread_safe
 Scenario: Succsesful login to mail site using resources and ScenarioContext (not thread safe) to share data between steps
-	Given I enter a correct mailbox login with saving into ScenarioContext (not thread safe)
-		And I enter a correct mailbox domain with saving into ScenarioContext (not thread safe)
+	Given I enter a correct mailbox login with saving into ScenarioContext
+		And I enter a correct mailbox domain with saving into ScenarioContext
 		And I enter a correct mailbox password
 		And I select that I have not authentication remembering
 	When I submit my login data
-	Then I should see my correct e-mail address in the header of site, using ScenarioContext (not thread safe)
+	Then I should see my correct e-mail address in the header of site, using ScenarioContext
 
-@positive
+@positive @thread_safe
 Scenario: Succsesful login to mail site using resources and ScenarioContext (thread safe) to share data between steps
-	Given I enter a correct mailbox login with saving into ScenarioContext (thread safe)
-		And I enter a correct mailbox domain with saving into ScenarioContext (thread safe)
+	Given I enter a correct mailbox login with saving into ScenarioContext
+		And I enter a correct mailbox domain with saving into ScenarioContext
 		And I enter a correct mailbox password
 		And I select that I have not authentication remembering
 	When I submit my login data
-	Then I should see my correct e-mail address in the header of site, using ScenarioContext (thread safe)
+	Then I should see my correct e-mail address in the header of site, using ScenarioContext
 
 @positive
 Scenario: Succsesful login to mail site using weakly-typed step data table

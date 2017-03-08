@@ -130,21 +130,21 @@ this.FeatureBackground();
         [NUnit.Framework.DescriptionAttribute("Succsesful login to mail site using resources and ScenarioContext (not thread saf" +
             "e) to share data between steps")]
         [NUnit.Framework.CategoryAttribute("positive")]
+        [NUnit.Framework.CategoryAttribute("not_thread_safe")]
         public virtual void SuccsesfulLoginToMailSiteUsingResourcesAndScenarioContextNotThreadSafeToShareDataBetweenSteps()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Succsesful login to mail site using resources and ScenarioContext (not thread saf" +
                     "e) to share data between steps", new string[] {
-                        "positive"});
+                        "positive",
+                        "not_thread_safe"});
 #line 28
 this.ScenarioSetup(scenarioInfo);
 #line 6
 this.FeatureBackground();
 #line 29
- testRunner.Given("I enter a correct mailbox login with saving into ScenarioContext (not thread safe" +
-                    ")", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I enter a correct mailbox login with saving into ScenarioContext", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 30
-  testRunner.And("I enter a correct mailbox domain with saving into ScenarioContext (not thread saf" +
-                    "e)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And("I enter a correct mailbox domain with saving into ScenarioContext", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 31
   testRunner.And("I enter a correct mailbox password", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 32
@@ -153,7 +153,7 @@ this.FeatureBackground();
  testRunner.When("I submit my login data", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 34
  testRunner.Then("I should see my correct e-mail address in the header of site, using ScenarioConte" +
-                    "xt (not thread safe)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+                    "xt", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -162,19 +162,21 @@ this.FeatureBackground();
         [NUnit.Framework.DescriptionAttribute("Succsesful login to mail site using resources and ScenarioContext (thread safe) t" +
             "o share data between steps")]
         [NUnit.Framework.CategoryAttribute("positive")]
+        [NUnit.Framework.CategoryAttribute("thread_safe")]
         public virtual void SuccsesfulLoginToMailSiteUsingResourcesAndScenarioContextThreadSafeToShareDataBetweenSteps()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Succsesful login to mail site using resources and ScenarioContext (thread safe) t" +
                     "o share data between steps", new string[] {
-                        "positive"});
+                        "positive",
+                        "thread_safe"});
 #line 37
 this.ScenarioSetup(scenarioInfo);
 #line 6
 this.FeatureBackground();
 #line 38
- testRunner.Given("I enter a correct mailbox login with saving into ScenarioContext (thread safe)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I enter a correct mailbox login with saving into ScenarioContext", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 39
-  testRunner.And("I enter a correct mailbox domain with saving into ScenarioContext (thread safe)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And("I enter a correct mailbox domain with saving into ScenarioContext", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 40
   testRunner.And("I enter a correct mailbox password", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 41
@@ -183,7 +185,7 @@ this.FeatureBackground();
  testRunner.When("I submit my login data", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 43
  testRunner.Then("I should see my correct e-mail address in the header of site, using ScenarioConte" +
-                    "xt (thread safe)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+                    "xt", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

@@ -122,24 +122,27 @@ namespace DemoMail_Nunit.Test
             _loginPage.PasswordText = fields.password;
         }
 
-        [Given(@"I enter a correct mailbox login with saving into ScenarioContext \(not thread safe\)")]
-        public void GivenIEnterACorrectMailboxLoginWithSavingIntoScenarioContextNotThreadSafe()
+        [Given(@"I enter a correct mailbox login with saving into ScenarioContext")]
+        [Scope(Tag = "not_thread_safe")]
+        public void GivenIEnterACorrectMailboxLoginWithSavingIntoScenarioContextNotThreadSave()
         {
             ScenarioContext.Current["ExpectedMail"] = Resources.Login;
 
             _loginPage.BoxName = Resources.Login;
         }
 
-        [Given(@"I enter a correct mailbox domain with saving into ScenarioContext \(not thread safe\)")]
-        public void GivenIEnterACorrectMailboxDomainWithSavingIntoScenarioContextNotThreadSafe()
+        [Given(@"I enter a correct mailbox domain with saving into ScenarioContext")]
+        [Scope(Tag = "not_thread_safe")]
+        public void GivenIEnterACorrectMailboxDomainWithSavingIntoScenarioContextNotThreadSave()
         {
             ScenarioContext.Current["ExpectedMail"] += Resources.Domain;
 
             _loginPage.DomainName = Resources.Domain;
         }
 
-        [Then(@"I should see my correct e-mail address in the header of site, using ScenarioContext \(not thread safe\)")]
-        public void ThenIShouldSeeMyCorrectE_MailAddressInTheHeaderOfSiteUsingScenarioContextNotThreadSafe()
+        [Then(@"I should see my correct e-mail address in the header of site, using ScenarioContext")]
+        [Scope(Tag = "not_thread_safe")]
+        public void ThenIShouldSeeMyCorrectE_MailAddressInTheHeaderOfSiteUsingScenarioContextNotThreadSave()
         {
             string correctEmail = (string)ScenarioContext.Current["ExpectedMail"];
             correctEmail = correctEmail.ToLower();
@@ -147,24 +150,27 @@ namespace DemoMail_Nunit.Test
             Assert.That(correctEmail, Is.EqualTo(_mainMailPage.UserEmail));
         }
 
-        [Given(@"I enter a correct mailbox login with saving into ScenarioContext \(thread safe\)")]
-        public void GivenIEnterACorrectMailboxLoginWithSavingIntoScenarioContextThreadSafe()
+        [Given(@"I enter a correct mailbox login with saving into ScenarioContext")]
+        [Scope(Tag = "thread_safe")]
+        public void GivenIEnterACorrectMailboxLoginWithSavingIntoScenarioContextThreadSave()
         {
             this.ScenarioContext["ExpectedMail"] = Resources.Login;
 
             _loginPage.BoxName = Resources.Login;
         }
 
-        [Given(@"I enter a correct mailbox domain with saving into ScenarioContext \(thread safe\)")]
-        public void GivenIEnterACorrectMailboxDomainWithSavingIntoScenarioContextThreadSafe()
+        [Given(@"I enter a correct mailbox domain with saving into ScenarioContext")]
+        [Scope(Tag = "thread_safe")]
+        public void GivenIEnterACorrectMailboxDomainWithSavingIntoScenarioContextThreadSave()
         {
             this.ScenarioContext["ExpectedMail"] += Resources.Domain;
 
             _loginPage.DomainName = Resources.Domain;
         }
 
-        [Then(@"I should see my correct e-mail address in the header of site, using ScenarioContext \(thread safe\)")]
-        public void ThenIShouldSeeMyCorrectE_MailAddressInTheHeaderOfSiteUsingScenarioContextThreadSafe()
+        [Then(@"I should see my correct e-mail address in the header of site, using ScenarioContext")]
+        [Scope(Tag = "thread_safe")]
+        public void ThenIShouldSeeMyCorrectE_MailAddressInTheHeaderOfSiteUsingScenarioContextThreadSave()
         {
             string correctEmail = (string)this.ScenarioContext["ExpectedMail"];
             correctEmail = correctEmail.ToLower();
