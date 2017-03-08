@@ -1,12 +1,12 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
+using DemoMail.Test.Properties;
 
 namespace DemoMail_Nunit.Test
 {
     public class LoginPage
     {
         private readonly IWebDriver _driver;
-        private const string PageURL = @"https://mail.ru/";
 
         [FindsBy(How = How.Id, Using = "mailbox__login")]
         private IWebElement _boxName;
@@ -32,7 +32,7 @@ namespace DemoMail_Nunit.Test
 
         public static LoginPage NavigateTo(IWebDriver driver)
         {
-            driver.Navigate().GoToUrl(PageURL);
+            driver.Navigate().GoToUrl(Resources.Url);
 
             return new LoginPage(driver);
         }
