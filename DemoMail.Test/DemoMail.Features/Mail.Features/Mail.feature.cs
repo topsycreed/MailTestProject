@@ -127,13 +127,75 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Succsesful login to mail site using resources and ScenarioContext (not thread saf" +
+            "e) to share data between steps")]
+        [NUnit.Framework.CategoryAttribute("positive")]
+        public virtual void SuccsesfulLoginToMailSiteUsingResourcesAndScenarioContextNotThreadSafeToShareDataBetweenSteps()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Succsesful login to mail site using resources and ScenarioContext (not thread saf" +
+                    "e) to share data between steps", new string[] {
+                        "positive"});
+#line 28
+this.ScenarioSetup(scenarioInfo);
+#line 6
+this.FeatureBackground();
+#line 29
+ testRunner.Given("I enter a correct mailbox login with saving into ScenarioContext (not thread safe" +
+                    ")", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 30
+  testRunner.And("I enter a correct mailbox domain with saving into ScenarioContext (not thread saf" +
+                    "e)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 31
+  testRunner.And("I enter a correct mailbox password", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 32
+  testRunner.And("I select that I have not authentication remembering", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 33
+ testRunner.When("I submit my login data", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 34
+ testRunner.Then("I should see my correct e-mail address in the header of site, using ScenarioConte" +
+                    "xt (not thread safe)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Succsesful login to mail site using resources and ScenarioContext (thread safe) t" +
+            "o share data between steps")]
+        [NUnit.Framework.CategoryAttribute("positive")]
+        public virtual void SuccsesfulLoginToMailSiteUsingResourcesAndScenarioContextThreadSafeToShareDataBetweenSteps()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Succsesful login to mail site using resources and ScenarioContext (thread safe) t" +
+                    "o share data between steps", new string[] {
+                        "positive"});
+#line 37
+this.ScenarioSetup(scenarioInfo);
+#line 6
+this.FeatureBackground();
+#line 38
+ testRunner.Given("I enter a correct mailbox login with saving into ScenarioContext (thread safe)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 39
+  testRunner.And("I enter a correct mailbox domain with saving into ScenarioContext (thread safe)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 40
+  testRunner.And("I enter a correct mailbox password", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 41
+  testRunner.And("I select that I have not authentication remembering", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 42
+ testRunner.When("I submit my login data", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 43
+ testRunner.Then("I should see my correct e-mail address in the header of site, using ScenarioConte" +
+                    "xt (thread safe)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Succsesful login to mail site using weakly-typed step data table")]
         [NUnit.Framework.CategoryAttribute("positive")]
         public virtual void SuccsesfulLoginToMailSiteUsingWeakly_TypedStepDataTable()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Succsesful login to mail site using weakly-typed step data table", new string[] {
                         "positive"});
-#line 28
+#line 46
 this.ScenarioSetup(scenarioInfo);
 #line 6
 this.FeatureBackground();
@@ -150,13 +212,13 @@ this.FeatureBackground();
             table1.AddRow(new string[] {
                         "password",
                         "INeedSomePassword"});
-#line 29
+#line 47
  testRunner.Given("I enter following parameters on Login page (weak)", ((string)(null)), table1, "Given ");
-#line 34
+#line 52
   testRunner.And("I select that I have not authentication remembering", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 35
+#line 53
  testRunner.When("I submit my login data", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 36
+#line 54
  testRunner.Then("I should see my e-mail address JohnDoe1990@list.ru in the header of site", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -169,7 +231,7 @@ this.FeatureBackground();
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Succsesful login to mail site using strongly-typed step data table", new string[] {
                         "positive"});
-#line 39
+#line 57
 this.ScenarioSetup(scenarioInfo);
 #line 6
 this.FeatureBackground();
@@ -186,13 +248,13 @@ this.FeatureBackground();
             table2.AddRow(new string[] {
                         "password",
                         "INeedSomePassword"});
-#line 40
+#line 58
  testRunner.Given("I enter following parameters on Login page (strong)", ((string)(null)), table2, "Given ");
-#line 45
+#line 63
   testRunner.And("I select that I have not authentication remembering", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 46
+#line 64
  testRunner.When("I submit my login data", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 47
+#line 65
  testRunner.Then("I should see my e-mail address JohnDoe1990@list.ru in the header of site", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -205,7 +267,7 @@ this.FeatureBackground();
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Succsesful login to mail site using dynamic step data table", new string[] {
                         "positive"});
-#line 50
+#line 68
 this.ScenarioSetup(scenarioInfo);
 #line 6
 this.FeatureBackground();
@@ -222,13 +284,13 @@ this.FeatureBackground();
             table3.AddRow(new string[] {
                         "password",
                         "INeedSomePassword"});
-#line 51
+#line 69
  testRunner.Given("I enter following parameters on Login page (dynamic)", ((string)(null)), table3, "Given ");
-#line 56
+#line 74
   testRunner.And("I select that I have not authentication remembering", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 57
+#line 75
  testRunner.When("I submit my login data", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 58
+#line 76
  testRunner.Then("I should see my e-mail address JohnDoe1990@list.ru in the header of site", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -249,21 +311,21 @@ this.FeatureBackground();
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Login to mail site with incorrect password", @__tags);
-#line 61
+#line 79
 this.ScenarioSetup(scenarioInfo);
 #line 6
 this.FeatureBackground();
-#line 62
+#line 80
  testRunner.Given("I enter a correct mailbox login", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 63
+#line 81
   testRunner.And("I enter a correct mailbox domain", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 64
+#line 82
   testRunner.And(string.Format("I enter a incorrect mailbox {0} password", password), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 65
+#line 83
   testRunner.And("I select that I have not authentication remembering", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 66
+#line 84
  testRunner.When("I submit my login data", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 67
+#line 85
  testRunner.Then("I should see error message Неверное имя пользователя или пароль. Проверьте правил" +
                     "ьность введенных данных. about invalid login or password", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
