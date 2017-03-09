@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using DemoMail.Test.Properties;
+using DemoMail.Test.PageObjects;
 
 namespace DemoMail_Nunit.Test
 {
@@ -71,6 +72,13 @@ namespace DemoMail_Nunit.Test
             _submitLogin.Click();
 
             return new MainMailPage(_driver);
+        }
+
+        public ErrorLoginPage SubmitInvalidLogin()
+        {
+            _submitLogin.Click();
+
+            return new ErrorLoginPage(_driver);
         }
     }
 }

@@ -301,13 +301,15 @@ this.FeatureBackground();
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Login to mail site with incorrect password")]
         [NUnit.Framework.CategoryAttribute("negative")]
+        [NUnit.Framework.CategoryAttribute("invalid_login_or_password")]
         [NUnit.Framework.TestCaseAttribute("INeedSomePassword1", new string[0])]
         [NUnit.Framework.TestCaseAttribute("NeedSomePassword", new string[0])]
         [NUnit.Framework.TestCaseAttribute("I_Need_Some_Password", new string[0])]
         public virtual void LoginToMailSiteWithIncorrectPassword(string password, string[] exampleTags)
         {
             string[] @__tags = new string[] {
-                    "negative"};
+                    "negative",
+                    "invalid_login_or_password"};
             if ((exampleTags != null))
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));

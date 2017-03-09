@@ -6,6 +6,7 @@ using OpenQA.Selenium.Chrome;
 using DemoMail.Test.Properties;
 using System.Linq;
 using DemoMail.Test.Support;
+using DemoMail.Test.PageObjects;
 
 namespace DemoMail_Nunit.Test
 {
@@ -15,6 +16,7 @@ namespace DemoMail_Nunit.Test
         private IWebDriver _driver;
         private LoginPage _loginPage;
         private MainMailPage _mainMailPage;
+        private ErrorLoginPage _errorLoginPage;
 
         [Given(@"I am on the mail site")]
         public void GivenIAmOnTheMailSite()
@@ -56,6 +58,13 @@ namespace DemoMail_Nunit.Test
             _mainMailPage = _loginPage.SubmitLogin();
         }
 
+        [When(@"I submit my login data")]
+        [Scope(Tag = "invalid_login_or_password")]
+        public void WhenISubmitMyInvalidLoginData()
+        {
+            _errorLoginPage = _loginPage.SubmitInvalidLogin();
+        }
+
         [Then(@"I should see my e-mail address (.*) in the header of site")]
         public void ThenIShouldSeeMyE_MailAddressJohnDoeList_RuInTheHeaderOfSite(string correctEmail)
         {
@@ -89,9 +98,9 @@ namespace DemoMail_Nunit.Test
         }
 
         [Then(@"I should see error message (.*) about invalid login or password")]
-        public void ThenIShouldSeeErrorMessageAboutInvalidLoginOrPassw0rd()
+        public void ThenIShouldSeeErrorMessageAboutInvalidLoginOrPassw0rd(string errorMessage)
         {
-            ScenarioContext.Current.Pending();
+            Assert.That(errorMessage, Is.EqualTo(_errorLoginPage.ErrorMessage));
         }
 
         [Given(@"I enter following parameters on Login page \(weak\)")]

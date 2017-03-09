@@ -75,7 +75,7 @@ Scenario: Succsesful login to mail site using dynamic step data table
 	When I submit my login data
 	Then I should see my e-mail address JohnDoe1990@list.ru in the header of site
 
-@negative
+@negative @invalid_login_or_password
 Scenario Outline: Login to mail site with incorrect password
 	Given I enter a correct mailbox login
 		And I enter a correct mailbox domain
