@@ -7,6 +7,7 @@ using DemoMail.Test.Properties;
 using System.Linq;
 using DemoMail.Test.Support;
 using DemoMail.Test.PageObjects;
+using System;
 
 namespace DemoMail_Nunit.Test
 {
@@ -21,7 +22,7 @@ namespace DemoMail_Nunit.Test
         [Given(@"I am on the mail site")]
         public void GivenIAmOnTheMailSite()
         {
-            var ChromeDriverLocation = Resources.Driver;
+            var ChromeDriverLocation = AppDomain.CurrentDomain.BaseDirectory;
             _driver = new ChromeDriver(ChromeDriverLocation);
             _driver.Manage().Window.Maximize();
 
