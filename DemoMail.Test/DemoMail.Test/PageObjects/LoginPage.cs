@@ -42,7 +42,23 @@ namespace DemoMail_Nunit.Test
         {
             set
             {
-                _boxName.SendKeys(value);
+                bool NotFinded = true;
+                int count = 1;
+
+                while (NotFinded && count < 10)
+                {
+                    try
+                    {
+                        _boxName.SendKeys(value);
+
+                        NotFinded = false;
+                        count++;
+                    }
+                    catch (StaleElementReferenceException)
+                    {
+                        continue;
+                    }
+                }
             }
         }
 
@@ -50,7 +66,23 @@ namespace DemoMail_Nunit.Test
         {
             set
             {
-                _domainName.SendKeys(value);
+                bool NotFinded = true;
+                int count = 1;
+
+                while (NotFinded && count < 10)
+                {
+                    try
+                    {
+                        _domainName.SendKeys(value);
+
+                        NotFinded = false;
+                        count++;
+                    }
+                    catch (StaleElementReferenceException)
+                    {
+                        continue;
+                    }
+                }
             }
         }
 
@@ -58,7 +90,23 @@ namespace DemoMail_Nunit.Test
         {
             set
             {
-                _passwordText.SendKeys(value);
+                bool NotFinded = true;
+                int count = 1;
+
+                while (NotFinded && count < 10)
+                {
+                    try
+                    {
+                        _passwordText.SendKeys(value);
+
+                        NotFinded = false;
+                        count++;
+                    }
+                    catch (StaleElementReferenceException)
+                    {
+                        continue;
+                    }
+                }
             }
         }
 
