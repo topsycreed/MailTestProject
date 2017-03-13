@@ -68,7 +68,7 @@ namespace DemoMail.Features.Mail_Features
         {
 #line 6
 #line 7
- testRunner.Given("I am on the mail site", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I am on the mail site with Chrome browser", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
         }
         

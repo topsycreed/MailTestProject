@@ -52,10 +52,10 @@ namespace DemoMail_Nunit.Test
                         _boxName.SendKeys(value);
 
                         NotFinded = false;
-                        count++;
                     }
                     catch (StaleElementReferenceException)
                     {
+                        count++;
                         continue;
                     }
                 }
@@ -76,10 +76,10 @@ namespace DemoMail_Nunit.Test
                         _domainName.SendKeys(value);
 
                         NotFinded = false;
-                        count++;
                     }
                     catch (StaleElementReferenceException)
                     {
+                        count++;
                         continue;
                     }
                 }
@@ -100,10 +100,10 @@ namespace DemoMail_Nunit.Test
                         _passwordText.SendKeys(value);
 
                         NotFinded = false;
-                        count++;
                     }
                     catch (StaleElementReferenceException)
                     {
+                        count++;
                         continue;
                     }
                 }

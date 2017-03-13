@@ -22,28 +22,26 @@ namespace DemoMail_Nunit.Test
         {
             get
             {
-                bool NotFinded = true;
                 int count = 1;
 
-                while (NotFinded && count < 10)
+                while (count < 10)
                 {
                     try
                     {
                         return _userEmail.Text;
-
-                        NotFinded = false;
-                        count++;
                     }
                     catch (StaleElementReferenceException)
                     {
+                        count++;
                         continue;
                     }
                     catch (TargetInvocationException)
                     {
+                        count++;
                         continue;
                     }
                 }
-                return _userEmail.Text;
+                return "Error";
             }
         }
     }

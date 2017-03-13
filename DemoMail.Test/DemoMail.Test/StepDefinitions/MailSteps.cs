@@ -8,6 +8,7 @@ using System.Linq;
 using DemoMail.Test.Support;
 using DemoMail.Test.PageObjects;
 using System;
+using DemoMail.Test.WrapperFactory;
 
 namespace DemoMail_Nunit.Test
 {
@@ -15,17 +16,17 @@ namespace DemoMail_Nunit.Test
     public class MailSteps : TechTalk.SpecFlow.Steps
     {
         private IWebDriver _driver;
+        private WebDriverFactory init = new WebDriverFactory();
         private LoginPage _loginPage;
         private MainMailPage _mainMailPage;
         private ErrorLoginPage _errorLoginPage;
 
-        [Given(@"I am on the mail site")]
-        public void GivenIAmOnTheMailSite()
+        [Given(@"I am on the mail site with (.*) browser")]
+        public void GivenIAmOnTheMailSiteWithBrowser(string browser)
         {
-            var ChromeDriverLocation = AppDomain.CurrentDomain.BaseDirectory;
-            _driver = new ChromeDriver(ChromeDriverLocation);
+            init.InitDriver(browser);
+            _driver = init.Driver;
             _driver.Manage().Window.Maximize();
-
             _loginPage = LoginPage.NavigateTo(_driver);
         }
 

@@ -4,7 +4,7 @@
 	I want to create and save simple email
 
 Background: 
-	Given I am on the mail site
+	Given I am on the mail site with Chrome browser
 
 @positive
 Scenario: Succsesful login to mail site using parameterization method input
