@@ -2,13 +2,12 @@
 using OpenQA.Selenium.Support.PageObjects;
 using DemoMail.Test.Properties;
 using DemoMail.Test.PageObjects;
+using DemoMail.Test.WrapperFactory;
 
 namespace DemoMail_Nunit.Test
 {
     public class LoginPage
     {
-        private readonly IWebDriver _driver;
-
         [FindsBy(How = How.Id, Using = "mailbox__login")]
         private IWebElement _boxName;
 
@@ -24,18 +23,9 @@ namespace DemoMail_Nunit.Test
         [FindsBy(How = How.Id, Using = "mailbox__auth__button")]
         private IWebElement _submitLogin;
 
-        public LoginPage(IWebDriver driver)
+        public void NavigateTo()
         {
-            _driver = driver;
-
-            PageFactory.InitElements(_driver, this);
-        }
-
-        public static LoginPage NavigateTo(IWebDriver driver)
-        {
-            driver.Navigate().GoToUrl(Resources.Url);
-
-            return new LoginPage(driver);
+            WebDriverFactory.Driver.Navigate().GoToUrl(Resources.Url);
         }
 
         public string BoxName
@@ -115,18 +105,14 @@ namespace DemoMail_Nunit.Test
             _deselectAuthenticationRemembering.Click();
         }
 
-        public MainMailPage SubmitLogin()
+        public void SubmitLogin()
         {
             _submitLogin.Click();
-
-            return new MainMailPage(_driver);
         }
 
-        public ErrorLoginPage SubmitInvalidLogin()
+        public void SubmitInvalidLogin()
         {
             _submitLogin.Click();
-
-            return new ErrorLoginPage(_driver);
         }
     }
 }

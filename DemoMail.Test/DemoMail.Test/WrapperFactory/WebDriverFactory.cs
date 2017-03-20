@@ -9,9 +9,9 @@ namespace DemoMail.Test.WrapperFactory
 {
     class WebDriverFactory
     {
-        private IWebDriver driver;
+        private static IWebDriver driver;
 
-        public IWebDriver Driver
+        public static IWebDriver Driver
         {
             get
             {
@@ -25,14 +25,15 @@ namespace DemoMail.Test.WrapperFactory
             }
         }
 
-        public void InitDriver(string driverName)
+        public static void InitDriver(string driverName)
         {
             switch (driverName)
             {
                 case "Firefox":
                     if (driver == null)
                     {
-                        driver = new FirefoxDriver();
+                        FirefoxDriverService service = FirefoxDriverService.CreateDefaultService(AppDomain.CurrentDomain.BaseDirectory, "geckodriver.exe");
+                        driver = new FirefoxDriver(service);
                     }
                     break;
 
@@ -52,9 +53,11 @@ namespace DemoMail.Test.WrapperFactory
             }
         }
 
-        public void CloseDriver()
+        public static void CloseDriver()
         {
-            Driver.Dispose();
+            if (Driver != null)
+                Driver.Quit();
+            Driver = null;
         }
     }
 }

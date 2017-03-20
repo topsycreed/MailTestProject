@@ -69,6 +69,7 @@
   <ItemGroup>
     <Compile Include="PageObjects\ErrorLoginPage.cs" />
     <Compile Include="PageObjects\LoginPage.cs" />
+    <Compile Include="PageObjects\Page.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
