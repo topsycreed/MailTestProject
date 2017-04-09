@@ -9,6 +9,8 @@ namespace DemoMail_Nunit.Test
 {
     public class LoginPage
     {
+        #region FindElements by locator
+
         [FindsBy(How = How.Id, Using = "mailbox__login")]
         private IWebElement _boxName;
 
@@ -29,12 +31,15 @@ namespace DemoMail_Nunit.Test
         [FindsBy(How = How.ClassName, Using = "b-toolbar__btn__text b-toolbar__btn__text_pad")]
         private IWebElement _submitNewMail;
 
+        #endregion
+
+        #region Fields
+
         private WebDriverWait wait = new WebDriverWait(WebDriverFactory.Driver, TimeSpan.FromSeconds(10));
 
-        public void NavigateTo()
-        {
-            WebDriverFactory.Driver.Navigate().GoToUrl(Resources.Url);
-        }
+        #endregion
+
+        #region Properties
 
         public string BoxName
         {
@@ -83,7 +88,7 @@ namespace DemoMail_Nunit.Test
                 }
             }
         }
-
+        //ToDo: Rewrite
         public string PasswordText
         {
             set
@@ -106,6 +111,15 @@ namespace DemoMail_Nunit.Test
                     }
                 }
             }
+        }
+
+        #endregion
+
+        #region Methods
+
+        public void NavigateTo()
+        {
+            WebDriverFactory.Driver.Navigate().GoToUrl(Resources.Url);
         }
 
         public void DeselectAuthenticationRemembering()
@@ -134,5 +148,7 @@ namespace DemoMail_Nunit.Test
         {
             _submitNewMail.Click();
         }
+
+        #endregion
     }
 }

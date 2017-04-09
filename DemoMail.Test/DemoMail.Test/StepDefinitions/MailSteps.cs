@@ -6,12 +6,15 @@ using System.Linq;
 using DemoMail.Test.Support;
 using DemoMail.Test.PageObjects;
 using DemoMail.Test.WrapperFactory;
+using OpenQA.Selenium;
 
 namespace DemoMail_Nunit.Test
 {
     [Binding]
     public class MailSteps : TechTalk.SpecFlow.Steps
     {
+        #region Background
+
         [Given(@"I am on the mail site with (.*) browser")]
         public void GivenIAmOnTheMailSiteWithBrowser(string browser)
         {
@@ -20,6 +23,12 @@ namespace DemoMail_Nunit.Test
 
             Page.Login.NavigateTo();
         }
+
+        #endregion
+
+    #region Login
+
+        #region Succsesful login to mail site using parameterization method input
 
         [Given(@"I enter a mailbox login (.*)")]
         public void GivenIEnterAMailboxLoginJohnDoe(string login)
@@ -51,13 +60,6 @@ namespace DemoMail_Nunit.Test
             Page.Login.SubmitLogin();
         }
 
-        [When(@"I submit my login data")]
-        [Scope(Tag = "invalid_login_or_password")]
-        public void WhenISubmitMyInvalidLoginData()
-        {
-            Page.Login.SubmitInvalidLogin();
-        }
-
         [Then(@"I should see my e-mail address (.*) in the header of site")]
         public void ThenIShouldSeeMyE_MailAddressJohnDoeList_RuInTheHeaderOfSite(string correctEmail)
         {
@@ -66,14 +68,9 @@ namespace DemoMail_Nunit.Test
             Assert.That(correctEmail, Is.EqualTo(Page.MainMail.UserEmail));
         }
 
-        [Given(@"I should see my e-mail address (.*) in the header of site")]
-        [Scope(Tag = "draft")]
-        public void GivenIShouldSeeMyE_MailAddressJohnDoeList_RuInTheHeaderOfSite(string correctEmail)
-        {
-            correctEmail = correctEmail.ToLower();
+        #endregion
 
-            Assert.That(correctEmail, Is.EqualTo(Page.MainMail.UserEmail));
-        }
+        #region Succsesful login to mail site using resources
 
         [Given(@"I enter a correct mailbox login")]
         public void GivenIEnterACorrectMailboxLogin()
@@ -93,45 +90,9 @@ namespace DemoMail_Nunit.Test
             Page.Login.PasswordText = Resources.Password;
         }
 
-        [Given(@"I enter a incorrect mailbox (.*) password")]
-        public void GivenIEnterAIncorrectMailboxINeedSomePassword(string password)
-        {
-            Page.Login.PasswordText = password;
-        }
+        #endregion
 
-        [Then(@"I should see error message (.*) about invalid login or password")]
-        public void ThenIShouldSeeErrorMessageAboutInvalidLoginOrPassw0rd(string errorMessage)
-        {
-            Assert.That(errorMessage, Is.EqualTo(Page.ErrorLogin.ErrorMessage));
-        }
-
-        [Given(@"I enter following parameters on Login page \(weak\)")]
-        public void GivenIEnterFollowingParametersOnLoginPageWeak(Table table)
-        {
-            Page.Login.BoxName = table.Rows.First(row => row["field"] == "login")["value"];
-            Page.Login.DomainName = table.Rows.First(row => row["field"] == "domain")["value"];
-            Page.Login.PasswordText = table.Rows.First(row => row["field"] == "password")["value"];
-        }
-
-        [Given(@"I enter following parameters on Login page \(strong\)")]
-        public void GivenIEnterFollowingParametersOnLoginPageStrong(Table table)
-        {
-            var fields = table.CreateInstance<MailFields>();
-
-            Page.Login.BoxName = fields.Login;
-            Page.Login.DomainName = fields.Domain;
-            Page.Login.PasswordText = fields.Password;
-        }
-
-        [Given(@"I enter following parameters on Login page \(dynamic\)")]
-        public void GivenIEnterFollowingParametersOnLoginPageDynamic(Table table)
-        {
-            dynamic fields = table.CreateDynamicInstance();
-
-            Page.Login.BoxName = fields.login;
-            Page.Login.DomainName = fields.domain;
-            Page.Login.PasswordText = fields.password;
-        }
+        #region Succsesful login to mail site using resources and ScenarioContext (not thread safe) to share data between steps
 
         [Given(@"I enter a correct mailbox login with saving into ScenarioContext")]
         [Scope(Tag = "not_thread_safe")]
@@ -161,6 +122,10 @@ namespace DemoMail_Nunit.Test
             Assert.That(correctEmail, Is.EqualTo(Page.MainMail.UserEmail));
         }
 
+        #endregion
+
+        #region Succsesful login to mail site using resources and ScenarioContext (thread safe) to share data between steps
+
         [Given(@"I enter a correct mailbox login with saving into ScenarioContext")]
         [Scope(Tag = "thread_safe")]
         public void GivenIEnterACorrectMailboxLoginWithSavingIntoScenarioContextThreadSave()
@@ -188,6 +153,77 @@ namespace DemoMail_Nunit.Test
 
             Assert.That(correctEmail, Is.EqualTo(Page.MainMail.UserEmail));
         }
+
+        #endregion
+
+        #region Succsesful login to mail site using weakly-typed step data table
+
+        [Given(@"I enter following parameters on Login page \(weak\)")]
+        public void GivenIEnterFollowingParametersOnLoginPageWeak(Table table)
+        {
+            Page.Login.BoxName = table.Rows.First(row => row["field"] == "login")["value"];
+            Page.Login.DomainName = table.Rows.First(row => row["field"] == "domain")["value"];
+            Page.Login.PasswordText = table.Rows.First(row => row["field"] == "password")["value"];
+        }
+
+        #endregion
+
+        #region Succsesful login to mail site using strongly-typed step data table
+
+        [Given(@"I enter following parameters on Login page \(strong\)")]
+        public void GivenIEnterFollowingParametersOnLoginPageStrong(Table table)
+        {
+            var fields = table.CreateInstance<MailFields>();
+
+            Page.Login.BoxName = fields.Login;
+            Page.Login.DomainName = fields.Domain;
+            Page.Login.PasswordText = fields.Password;
+        }
+
+        #endregion
+
+        #region Succsesful login to mail site using dynamic step data table
+
+        [Given(@"I enter following parameters on Login page \(dynamic\)")]
+        public void GivenIEnterFollowingParametersOnLoginPageDynamic(Table table)
+        {
+            dynamic fields = table.CreateDynamicInstance();
+
+            Page.Login.BoxName = fields.login;
+            Page.Login.DomainName = fields.domain;
+            Page.Login.PasswordText = fields.password;
+        }
+
+        #endregion
+
+        #region Login to mail site with incorrect password
+
+        [Given(@"I enter a incorrect mailbox (.*) password")]
+        public void GivenIEnterAIncorrectMailboxINeedSomePassword(string password)
+        {
+            Page.Login.PasswordText = password;
+        }
+
+        [When(@"I submit my login data")]
+        [Scope(Tag = "invalid_login_or_password")]
+        public void WhenISubmitMyInvalidLoginData()
+        {
+            Page.Login.SubmitInvalidLogin();
+        }
+
+        [Then(@"I should see error message (.*) about invalid login or password")]
+        public void ThenIShouldSeeErrorMessageAboutInvalidLoginOrPassw0rd(string errorMessage)
+        {
+            Assert.That(errorMessage, Is.EqualTo(Page.ErrorLogin.ErrorMessage));
+        }
+
+        #endregion
+
+    #endregion
+
+    #region Draft
+
+        #region Succesful saving draft e-mail
 
         //This is duplicate method becouse possible SpecFlow error
         [Given(@"I submit my login data")]
@@ -245,23 +281,49 @@ namespace DemoMail_Nunit.Test
             Assert.That(Page.MainMail.SaveStatus, Does.Contain("Сохранено в черновиках в"));
         }
 
+        #endregion
+
+        #region Viewing draft e-mails after saving
+
+        //This is duplicate method becouse possible SpecFlow error
+        [Given(@"I submit saving my message")]
+        [Scope(Tag = "draft")]
+        public void GivenISubmitSavingMyMessage()
+        {
+            Page.MainMail.SubmitSaving();
+        }
+
         [Given(@"I succesfully saving draft e-mail")]
         public void GivenISuccesfullySavingDraftE_Mail()
         {
-            ScenarioContext.Current.Pending();
+            Given(string.Format("I select a new e-mail"));
+            Given(string.Format("I enter a whom of the message johndoe1990@list.ru"));
+            Given(string.Format("I enter a theme of the message Test"));
+            Given(string.Format("I enter a body of the message Hello, Mail World!"));
+            Given(string.Format("I submit saving my message"));
         }
 
         [When(@"I select drafts messages")]
         public void WhenISelectDraftsMessages()
         {
-            ScenarioContext.Current.Pending();
+            Page.MainMail.OpenDraft();
         }
 
         [Then(@"I should see a first message that equals my saved draft")]
         public void ThenIShouldSeeAFirstMessageThatEqualsMySavedDraft()
         {
-            ScenarioContext.Current.Pending();
+            string toWhom = Page.MainMail.DraftTitle;
+            string subject = Page.MainMail.DraftSubject;
+            string body = Page.MainMail.DraftBody;
+
+            Assert.That(toWhom, Is.EqualTo("johndoe1990@list.ru"));
+            Assert.That(subject, Does.Contain("Test"));
+            Assert.That(body, Does.Contain("Hello, Mail World!"));
         }
+
+        #endregion
+
+    #endregion
 
         [AfterScenario]
         public void DisposeWebDriver()

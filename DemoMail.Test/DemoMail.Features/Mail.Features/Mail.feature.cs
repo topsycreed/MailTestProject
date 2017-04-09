@@ -382,6 +382,31 @@ this.FeatureBackground();
 #line hidden
             this.ScenarioCleanup();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Viewing draft e-mails after saving")]
+        [NUnit.Framework.CategoryAttribute("positive")]
+        [NUnit.Framework.CategoryAttribute("draft")]
+        public virtual void ViewingDraftE_MailsAfterSaving()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Viewing draft e-mails after saving", new string[] {
+                        "positive",
+                        "draft"});
+#line 104
+this.ScenarioSetup(scenarioInfo);
+#line 6
+this.FeatureBackground();
+#line 105
+ testRunner.Given("I succesfully login to mail site", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 106
+  testRunner.And("I succesfully saving draft e-mail", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 107
+ testRunner.When("I select drafts messages", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 108
+ testRunner.Then("I should see a first message that equals my saved draft", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore

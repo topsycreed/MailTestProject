@@ -100,9 +100,9 @@ Scenario: Succesful saving draft e-mail
 	When I submit saving my message
 	Then I should see a confirmation of saving
 
-#@positive @draft
-#Scenario: Viewing draft e-mails after saving
-#	Given I succesfully login to mail site
-#		And I succesfully saving draft e-mail
-#	When I select drafts messages
-#	Then I should see a first message that equals my saved draft
+@positive @draft
+Scenario: Viewing draft e-mails after saving
+	Given I succesfully login to mail site
+		And I succesfully saving draft e-mail
+	When I select drafts messages
+	Then I should see a first message that equals my saved draft
