@@ -75,10 +75,12 @@ namespace DemoMail.Features.Mail_Features
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Succsesful login to mail site using parameterization method input")]
         [NUnit.Framework.CategoryAttribute("positive")]
+        [NUnit.Framework.CategoryAttribute("login")]
         public virtual void SuccsesfulLoginToMailSiteUsingParameterizationMethodInput()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Succsesful login to mail site using parameterization method input", new string[] {
-                        "positive"});
+                        "positive",
+                        "login"});
 #line 10
 this.ScenarioSetup(scenarioInfo);
 #line 6
@@ -102,10 +104,12 @@ this.FeatureBackground();
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Succsesful login to mail site using resources")]
         [NUnit.Framework.CategoryAttribute("positive")]
+        [NUnit.Framework.CategoryAttribute("login")]
         public virtual void SuccsesfulLoginToMailSiteUsingResources()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Succsesful login to mail site using resources", new string[] {
-                        "positive"});
+                        "positive",
+                        "login"});
 #line 19
 this.ScenarioSetup(scenarioInfo);
 #line 6
@@ -130,12 +134,14 @@ this.FeatureBackground();
         [NUnit.Framework.DescriptionAttribute("Succsesful login to mail site using resources and ScenarioContext (not thread saf" +
             "e) to share data between steps")]
         [NUnit.Framework.CategoryAttribute("positive")]
+        [NUnit.Framework.CategoryAttribute("login")]
         [NUnit.Framework.CategoryAttribute("not_thread_safe")]
         public virtual void SuccsesfulLoginToMailSiteUsingResourcesAndScenarioContextNotThreadSafeToShareDataBetweenSteps()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Succsesful login to mail site using resources and ScenarioContext (not thread saf" +
                     "e) to share data between steps", new string[] {
                         "positive",
+                        "login",
                         "not_thread_safe"});
 #line 28
 this.ScenarioSetup(scenarioInfo);
@@ -162,12 +168,14 @@ this.FeatureBackground();
         [NUnit.Framework.DescriptionAttribute("Succsesful login to mail site using resources and ScenarioContext (thread safe) t" +
             "o share data between steps")]
         [NUnit.Framework.CategoryAttribute("positive")]
+        [NUnit.Framework.CategoryAttribute("login")]
         [NUnit.Framework.CategoryAttribute("thread_safe")]
         public virtual void SuccsesfulLoginToMailSiteUsingResourcesAndScenarioContextThreadSafeToShareDataBetweenSteps()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Succsesful login to mail site using resources and ScenarioContext (thread safe) t" +
                     "o share data between steps", new string[] {
                         "positive",
+                        "login",
                         "thread_safe"});
 #line 37
 this.ScenarioSetup(scenarioInfo);
@@ -193,10 +201,12 @@ this.FeatureBackground();
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Succsesful login to mail site using weakly-typed step data table")]
         [NUnit.Framework.CategoryAttribute("positive")]
+        [NUnit.Framework.CategoryAttribute("login")]
         public virtual void SuccsesfulLoginToMailSiteUsingWeakly_TypedStepDataTable()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Succsesful login to mail site using weakly-typed step data table", new string[] {
-                        "positive"});
+                        "positive",
+                        "login"});
 #line 46
 this.ScenarioSetup(scenarioInfo);
 #line 6
@@ -229,10 +239,12 @@ this.FeatureBackground();
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Succsesful login to mail site using strongly-typed step data table")]
         [NUnit.Framework.CategoryAttribute("positive")]
+        [NUnit.Framework.CategoryAttribute("login")]
         public virtual void SuccsesfulLoginToMailSiteUsingStrongly_TypedStepDataTable()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Succsesful login to mail site using strongly-typed step data table", new string[] {
-                        "positive"});
+                        "positive",
+                        "login"});
 #line 57
 this.ScenarioSetup(scenarioInfo);
 #line 6
@@ -265,10 +277,12 @@ this.FeatureBackground();
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Succsesful login to mail site using dynamic step data table")]
         [NUnit.Framework.CategoryAttribute("positive")]
+        [NUnit.Framework.CategoryAttribute("login")]
         public virtual void SuccsesfulLoginToMailSiteUsingDynamicStepDataTable()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Succsesful login to mail site using dynamic step data table", new string[] {
-                        "positive"});
+                        "positive",
+                        "login"});
 #line 68
 this.ScenarioSetup(scenarioInfo);
 #line 6
@@ -301,6 +315,7 @@ this.FeatureBackground();
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Login to mail site with incorrect password")]
         [NUnit.Framework.CategoryAttribute("negative")]
+        [NUnit.Framework.CategoryAttribute("login")]
         [NUnit.Framework.CategoryAttribute("invalid_login_or_password")]
         [NUnit.Framework.TestCaseAttribute("INeedSomePassword1", new string[0])]
         [NUnit.Framework.TestCaseAttribute("NeedSomePassword", new string[0])]
@@ -309,6 +324,7 @@ this.FeatureBackground();
         {
             string[] @__tags = new string[] {
                     "negative",
+                    "login",
                     "invalid_login_or_password"};
             if ((exampleTags != null))
             {
@@ -332,6 +348,37 @@ this.FeatureBackground();
 #line 85
  testRunner.Then("I should see error message Неверное имя пользователя или пароль. Проверьте правил" +
                     "ьность введенных данных. about invalid login or password", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Succesful saving draft e-mail")]
+        [NUnit.Framework.CategoryAttribute("positive")]
+        [NUnit.Framework.CategoryAttribute("draft")]
+        public virtual void SuccesfulSavingDraftE_Mail()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Succesful saving draft e-mail", new string[] {
+                        "positive",
+                        "draft"});
+#line 94
+this.ScenarioSetup(scenarioInfo);
+#line 6
+this.FeatureBackground();
+#line 95
+ testRunner.Given("I succesfully login to mail site", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 96
+  testRunner.And("I select a new e-mail", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 97
+  testRunner.And("I enter a whom of the message johndoe1990@list.ru", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 98
+  testRunner.And("I enter a theme of the message Test", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 99
+  testRunner.And("I enter a body of the message Hello, Mail World!", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 100
+ testRunner.When("I submit saving my message", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 101
+ testRunner.Then("I should see a confirmation of saving", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

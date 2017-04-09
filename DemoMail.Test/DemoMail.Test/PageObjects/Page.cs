@@ -23,7 +23,7 @@ namespace DemoMail.Test.PageObjects
             get { return GetPage<ErrorLoginPage>(); }
         }
 
-        public static MainMailPage MainMale
+        public static MainMailPage MainMail
         {
             get { return GetPage<MainMailPage>(); }
         }

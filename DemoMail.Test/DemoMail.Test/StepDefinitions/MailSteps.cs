@@ -1,13 +1,10 @@
 ﻿using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
 using NUnit.Framework;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 using DemoMail.Test.Properties;
 using System.Linq;
 using DemoMail.Test.Support;
 using DemoMail.Test.PageObjects;
-using System;
 using DemoMail.Test.WrapperFactory;
 
 namespace DemoMail_Nunit.Test
@@ -22,7 +19,6 @@ namespace DemoMail_Nunit.Test
             WebDriverFactory.Driver.Manage().Window.Maximize();
 
             Page.Login.NavigateTo();
-            Page.Login.DeselectAuthenticationRemembering();
         }
 
         [Given(@"I enter a mailbox login (.*)")]
@@ -67,7 +63,16 @@ namespace DemoMail_Nunit.Test
         {
             correctEmail = correctEmail.ToLower();
 
-            Assert.That(correctEmail, Is.EqualTo(Page.MainMale.UserEmail));
+            Assert.That(correctEmail, Is.EqualTo(Page.MainMail.UserEmail));
+        }
+
+        [Given(@"I should see my e-mail address (.*) in the header of site")]
+        [Scope(Tag = "draft")]
+        public void GivenIShouldSeeMyE_MailAddressJohnDoeList_RuInTheHeaderOfSite(string correctEmail)
+        {
+            correctEmail = correctEmail.ToLower();
+
+            Assert.That(correctEmail, Is.EqualTo(Page.MainMail.UserEmail));
         }
 
         [Given(@"I enter a correct mailbox login")]
@@ -80,7 +85,6 @@ namespace DemoMail_Nunit.Test
         public void GivenIEnterACorrectMailboxDomain()
         {
             Page.Login.DomainName = Resources.Domain;
-
         }
 
         [Given(@"I enter a correct mailbox password")]
@@ -154,7 +158,7 @@ namespace DemoMail_Nunit.Test
             string correctEmail = (string)ScenarioContext.Current["ExpectedMail"];
             correctEmail = correctEmail.ToLower();
 
-            Assert.That(correctEmail, Is.EqualTo(Page.MainMale.UserEmail));
+            Assert.That(correctEmail, Is.EqualTo(Page.MainMail.UserEmail));
         }
 
         [Given(@"I enter a correct mailbox login with saving into ScenarioContext")]
@@ -182,7 +186,81 @@ namespace DemoMail_Nunit.Test
             string correctEmail = (string)this.ScenarioContext["ExpectedMail"];
             correctEmail = correctEmail.ToLower();
 
-            Assert.That(correctEmail, Is.EqualTo(Page.MainMale.UserEmail));
+            Assert.That(correctEmail, Is.EqualTo(Page.MainMail.UserEmail));
+        }
+
+        //This is duplicate method becouse possible SpecFlow error
+        [Given(@"I submit my login data")]
+        [Scope(Tag = "draft")]
+        public void GivenISubmitMyLoginData()
+        {
+            Page.Login.SubmitLogin();
+        }
+
+        [Given(@"I succesfully login to mail site")]
+        public void GivenISuccesfullyLoginToMailSite()
+        {
+            Given(string.Format("I enter a correct mailbox login"));
+            Given(string.Format("I enter a correct mailbox domain"));
+            Given(string.Format("I enter a correct mailbox password"));
+            Given(string.Format("I select that I have not authentication remembering"));
+            //This is a SpecFlow bug? I can't use When in Given method. So I create duplicate method with Given
+            //When(string.Format("I submit my login data")); 
+            Given(string.Format("I submit my login data"));
+        }
+
+        [Given(@"I select a new e-mail")]
+        public void GivenISelectANewE_Mail()
+        {
+            Page.MainMail.WriteMail();
+        }
+
+        [Given(@"I enter a whom of the message (.*)")]
+        public void GivenIEnterAWhomOfTheMessage(string toWhom)
+        {
+            Page.MainMail.ToWhom = toWhom;
+        }
+
+        [Given(@"I enter a theme of the message (.*)")]
+        public void GivenIEnterAThemeOfTheMessage(string theme)
+        {
+            Page.MainMail.Theme = theme;
+        }
+
+        [Given(@"I enter a body of the message (.*)")]
+        public void GivenIEnterABodyOfTheMessage(string body)
+        {
+            Page.MainMail.Body = body;
+        }
+
+        [When(@"I submit saving my message")]
+        public void WhenISubmitSavingMyMessage()
+        {
+            Page.MainMail.SubmitSaving();
+        }
+
+        [Then(@"I should see a confirmation of saving")]
+        public void ThenIShouldSeeAConfirmationOfSaving()
+        {
+            Assert.That(Page.MainMail.SaveStatus, Does.Contain("Сохранено в черновиках в"));
+        }
+
+        [Given(@"I succesfully saving draft e-mail")]
+        public void GivenISuccesfullySavingDraftE_Mail()
+        {
+            ScenarioContext.Current.Pending();
+        }
+
+        [When(@"I select drafts messages")]
+        public void WhenISelectDraftsMessages()
+        {
+            ScenarioContext.Current.Pending();
+        }
+
+        [Then(@"I should see a first message that equals my saved draft")]
+        public void ThenIShouldSeeAFirstMessageThatEqualsMySavedDraft()
+        {
+            ScenarioContext.Current.Pending();
         }
 
         [AfterScenario]

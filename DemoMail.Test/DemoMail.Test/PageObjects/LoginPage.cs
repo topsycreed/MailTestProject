@@ -1,8 +1,9 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using DemoMail.Test.Properties;
-using DemoMail.Test.PageObjects;
 using DemoMail.Test.WrapperFactory;
+using System;
+using OpenQA.Selenium.Support.UI;
 
 namespace DemoMail_Nunit.Test
 {
@@ -17,11 +18,18 @@ namespace DemoMail_Nunit.Test
         [FindsBy(How = How.Id, Using = "mailbox__password")]
         private IWebElement _passwordText;
 
+        private bool isChecked;
+
         [FindsBy(How = How.Id, Using = "mailbox__auth__remember__checkbox")]
         private IWebElement _deselectAuthenticationRemembering;
 
         [FindsBy(How = How.Id, Using = "mailbox__auth__button")]
         private IWebElement _submitLogin;
+
+        [FindsBy(How = How.ClassName, Using = "b-toolbar__btn__text b-toolbar__btn__text_pad")]
+        private IWebElement _submitNewMail;
+
+        private WebDriverWait wait = new WebDriverWait(WebDriverFactory.Driver, TimeSpan.FromSeconds(10));
 
         public void NavigateTo()
         {
@@ -102,7 +110,14 @@ namespace DemoMail_Nunit.Test
 
         public void DeselectAuthenticationRemembering()
         {
-            _deselectAuthenticationRemembering.Click();
+            //If attribute exist in HTML then it checked, if not - then not checked and GetAttribute will return null
+            isChecked = (_deselectAuthenticationRemembering.GetAttribute("checked") != null);
+
+            //If checked then click to deselect
+            if (isChecked)
+            {
+                _deselectAuthenticationRemembering.Click();
+            }
         }
 
         public void SubmitLogin()
@@ -113,6 +128,11 @@ namespace DemoMail_Nunit.Test
         public void SubmitInvalidLogin()
         {
             _submitLogin.Click();
+        }
+
+        public void SubmitNewMail()
+        {
+            _submitNewMail.Click();
         }
     }
 }
