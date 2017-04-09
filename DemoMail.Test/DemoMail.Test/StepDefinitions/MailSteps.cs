@@ -254,19 +254,22 @@ namespace DemoMail_Nunit.Test
         [Given(@"I enter a whom of the message (.*)")]
         public void GivenIEnterAWhomOfTheMessage(string toWhom)
         {
-            Page.MainMail.ToWhom = toWhom;
+            this.ScenarioContext["ToWhom"] = toWhom;
+            Page.MainMail.ToWhom = (string)this.ScenarioContext["ToWhom"];
         }
 
         [Given(@"I enter a theme of the message (.*)")]
         public void GivenIEnterAThemeOfTheMessage(string theme)
         {
-            Page.MainMail.Theme = theme;
+            this.ScenarioContext["Theme"] = theme;
+            Page.MainMail.Theme = (string)this.ScenarioContext["Theme"];
         }
 
         [Given(@"I enter a body of the message (.*)")]
         public void GivenIEnterABodyOfTheMessage(string body)
         {
-            Page.MainMail.Body = body;
+            this.ScenarioContext["Body"] = body;
+            Page.MainMail.Body = (string)this.ScenarioContext["Body"];
         }
 
         [When(@"I submit saving my message")]
@@ -312,12 +315,18 @@ namespace DemoMail_Nunit.Test
         [Then(@"I should see a first message that equals my saved draft")]
         public void ThenIShouldSeeAFirstMessageThatEqualsMySavedDraft()
         {
+            //Actual data in saved draft
             string toWhom = Page.MainMail.DraftTitle;
             string subject = Page.MainMail.DraftSubject;
             string body = Page.MainMail.DraftBody;
 
+            //Data, added in saving draft
+            string _toWhom = (string)this.ScenarioContext["ToWhom"];
+            string _subject = (string)this.ScenarioContext["Theme"];
+            string _body = (string)this.ScenarioContext["Body"];
+
             Assert.That(toWhom, Is.EqualTo("johndoe1990@list.ru"));
-            Assert.That(subject, Does.Contain("Test"));
+            Assert.That(subject, Does.Contain(_subject));
             Assert.That(body, Does.Contain("Hello, Mail World!"));
         }
 
