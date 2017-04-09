@@ -82,26 +82,7 @@ namespace DemoMail_Nunit.Test
         {
             get
             {
-                int count = 1;
-
-                while (count < 10)
-                {
-                    try
-                    {
-                        return _userEmail.Text;
-                    }
-                    catch (StaleElementReferenceException)
-                    {
-                        count++;
-                        continue;
-                    }
-                    catch (TargetInvocationException)
-                    {
-                        count++;
-                        continue;
-                    }
-                }
-                return "Error in MainMailPage.UserEmail";
+                return _userEmail.Text;
             }
         }
 
@@ -202,6 +183,7 @@ namespace DemoMail_Nunit.Test
         public void WriteMail()
         {
             _writeMail.Click();
+            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//textarea[@data-original-name = 'To']")));
         }
 
         public void SubmitSaving()

@@ -45,23 +45,7 @@ namespace DemoMail_Nunit.Test
         {
             set
             {
-                bool NotFinded = true;
-                int count = 1;
-
-                while (NotFinded && count < 10)
-                {
-                    try
-                    {
-                        _boxName.SendKeys(value);
-
-                        NotFinded = false;
-                    }
-                    catch (StaleElementReferenceException)
-                    {
-                        count++;
-                        continue;
-                    }
-                }
+                _boxName.SendKeys(value);
             }
         }
 
@@ -69,47 +53,15 @@ namespace DemoMail_Nunit.Test
         {
             set
             {
-                bool NotFinded = true;
-                int count = 1;
-
-                while (NotFinded && count < 10)
-                {
-                    try
-                    {
-                        _domainName.SendKeys(value);
-
-                        NotFinded = false;
-                    }
-                    catch (StaleElementReferenceException)
-                    {
-                        count++;
-                        continue;
-                    }
-                }
+                _domainName.SendKeys(value);
             }
         }
-        //ToDo: Rewrite
+
         public string PasswordText
         {
             set
             {
-                bool NotFinded = true;
-                int count = 1;
-
-                while (NotFinded && count < 10)
-                {
-                    try
-                    {
-                        _passwordText.SendKeys(value);
-
-                        NotFinded = false;
-                    }
-                    catch (StaleElementReferenceException)
-                    {
-                        count++;
-                        continue;
-                    }
-                }
+                _passwordText.SendKeys(value);
             }
         }
 
@@ -120,6 +72,7 @@ namespace DemoMail_Nunit.Test
         public void NavigateTo()
         {
             WebDriverFactory.Driver.Navigate().GoToUrl(Resources.Url);
+            wait.Until(ExpectedConditions.ElementIsVisible(By.Id("mailbox__login")));
         }
 
         public void DeselectAuthenticationRemembering()
@@ -137,16 +90,13 @@ namespace DemoMail_Nunit.Test
         public void SubmitLogin()
         {
             _submitLogin.Click();
+            wait.Until(ExpectedConditions.ElementIsVisible(By.Id("PH_logoutLink")));
         }
 
         public void SubmitInvalidLogin()
         {
             _submitLogin.Click();
-        }
-
-        public void SubmitNewMail()
-        {
-            _submitNewMail.Click();
+            wait.Until(ExpectedConditions.ElementIsVisible(By.ClassName("b-login__errors")));
         }
 
         #endregion
