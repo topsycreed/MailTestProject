@@ -95,7 +95,7 @@ Scenario: Succesful saving draft e-mail
 	Given I succesfully login to mail site
 		And I select a new e-mail
 		And I enter a whom of the message johndoe1990@list.ru
-		And I enter a theme of the message Test
+		And I enter a theme of the message TestDraft
 		And I enter a body of the message Hello, Mail World!
 	When I submit saving my message
 	Then I should see a confirmation of saving
@@ -106,3 +106,20 @@ Scenario: Viewing draft e-mails after saving
 		And I succesfully saving draft e-mail
 	When I select drafts messages
 	Then I should see a first message that equals my saved draft
+
+@positive @sendMail
+Scenario: Succesful send e-mail
+	Given I succesfully login to mail site
+		And I select a new e-mail
+		And I enter a whom of the message johndoe1990@list.ru
+		And I enter a theme of the message TestSend
+		And I enter a body of the message Hello, this is a message!
+	When I submit sending my message
+	Then I should see a confirmation of sending
+
+@positive @sendMail
+Scenario: Viewing sended e-mail after sending
+	Given I succesfully login to mail site
+		And I succesfully sended e-mail
+	When I select sended messages
+	Then I should see a first message that equals my sended e-mail

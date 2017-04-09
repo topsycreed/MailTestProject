@@ -372,7 +372,7 @@ this.FeatureBackground();
 #line 97
   testRunner.And("I enter a whom of the message johndoe1990@list.ru", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 98
-  testRunner.And("I enter a theme of the message Test", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And("I enter a theme of the message TestDraft", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 99
   testRunner.And("I enter a body of the message Hello, Mail World!", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 100
@@ -404,6 +404,62 @@ this.FeatureBackground();
  testRunner.When("I select drafts messages", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 108
  testRunner.Then("I should see a first message that equals my saved draft", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Succesful send e-mail")]
+        [NUnit.Framework.CategoryAttribute("positive")]
+        [NUnit.Framework.CategoryAttribute("sendMail")]
+        public virtual void SuccesfulSendE_Mail()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Succesful send e-mail", new string[] {
+                        "positive",
+                        "sendMail"});
+#line 111
+this.ScenarioSetup(scenarioInfo);
+#line 6
+this.FeatureBackground();
+#line 112
+ testRunner.Given("I succesfully login to mail site", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 113
+  testRunner.And("I select a new e-mail", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 114
+  testRunner.And("I enter a whom of the message johndoe1990@list.ru", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 115
+  testRunner.And("I enter a theme of the message TestSend", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 116
+  testRunner.And("I enter a body of the message Hello, this is a message!", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 117
+ testRunner.When("I submit sending my message", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 118
+ testRunner.Then("I should see a confirmation of sending", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Viewing sended e-mail after sending")]
+        [NUnit.Framework.CategoryAttribute("positive")]
+        [NUnit.Framework.CategoryAttribute("sendMail")]
+        public virtual void ViewingSendedE_MailAfterSending()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Viewing sended e-mail after sending", new string[] {
+                        "positive",
+                        "sendMail"});
+#line 121
+this.ScenarioSetup(scenarioInfo);
+#line 6
+this.FeatureBackground();
+#line 122
+ testRunner.Given("I succesfully login to mail site", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 123
+  testRunner.And("I succesfully sended e-mail", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 124
+ testRunner.When("I select sended messages", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 125
+ testRunner.Then("I should see a first message that equals my sended e-mail", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

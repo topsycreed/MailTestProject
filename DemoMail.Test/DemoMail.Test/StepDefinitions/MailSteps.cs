@@ -228,6 +228,7 @@ namespace DemoMail_Nunit.Test
         //This is duplicate method becouse possible SpecFlow error
         [Given(@"I submit my login data")]
         [Scope(Tag = "draft")]
+        [Scope(Tag = "sendMail")]
         public void GivenISubmitMyLoginData()
         {
             Page.Login.SubmitLogin();
@@ -301,7 +302,7 @@ namespace DemoMail_Nunit.Test
         {
             Given(string.Format("I select a new e-mail"));
             Given(string.Format("I enter a whom of the message johndoe1990@list.ru"));
-            Given(string.Format("I enter a theme of the message Test"));
+            Given(string.Format("I enter a theme of the message TestDraft"));
             Given(string.Format("I enter a body of the message Hello, Mail World!"));
             Given(string.Format("I submit saving my message"));
         }
@@ -325,14 +326,86 @@ namespace DemoMail_Nunit.Test
             string _subject = (string)this.ScenarioContext["Theme"];
             string _body = (string)this.ScenarioContext["Body"];
 
-            Assert.That(toWhom, Is.EqualTo("johndoe1990@list.ru"));
+            Assert.That(toWhom, Is.EqualTo(_toWhom));
             Assert.That(subject, Does.Contain(_subject));
-            Assert.That(body, Does.Contain("Hello, Mail World!"));
+            Assert.That(body, Does.Contain(_body));
         }
 
         #endregion
 
-    #endregion
+        #endregion
+
+    #region Send
+
+        #region Succesful send e-mail
+
+        [When(@"I submit sending my message")]
+        public void WhenISubmitSendingMyMessage()
+        {
+            Page.MainMail.SendMail();
+        }
+
+        [Then(@"I should see a confirmation of sending")]
+        public void ThenIShouldSeeAConfirmationOfSending()
+        {
+            //Actual receiver of message
+            string toWhom = Page.MainMail.Receiver;
+
+            //Expected receiver of message
+            string _toWhom = (string)this.ScenarioContext["ToWhom"];
+
+            Assert.That(toWhom, Is.EqualTo(_toWhom));
+        }
+
+        #endregion
+
+        #region Viewing sended e-mail after sending
+
+        //This is duplicate method becouse possible SpecFlow error
+        [Given(@"I submit sending my message")]
+        [Scope(Tag = "sendMail")]
+        public void GivenISubmitSendingMyMessage()
+        {
+            Page.MainMail.SendMail();
+        }
+
+        [Given(@"I succesfully sended e-mail")]
+        public void GivenISuccesfullySendedE_Mail()
+        {
+            Given(string.Format("I select a new e-mail"));
+            Given(string.Format("I enter a whom of the message johndoe1990@list.ru"));
+            Given(string.Format("I enter a theme of the message TestSend"));
+            Given(string.Format("I enter a body of the message Hello, this is a message!"));
+            Given(string.Format("I submit sending my message"));
+        }
+
+        [When(@"I select sended messages")]
+        public void WhenISelectSendedMessages()
+        {
+            Page.MainMail.SendedMail();
+        }
+
+        [Then(@"I should see a first message that equals my sended e-mail")]
+        public void ThenIShouldSeeAFirstMessageThatEqualsMySendedE_Mail()
+        {
+            //Actual data in sended mail
+            string toWhom = Page.MainMail.SendedTitle;
+            string subject = Page.MainMail.SendedSubject;
+            string body = Page.MainMail.SendedBody;
+
+            //Data, added in sending mail
+            string _toWhom = (string)this.ScenarioContext["ToWhom"];
+            string _subject = (string)this.ScenarioContext["Theme"];
+            string _body = (string)this.ScenarioContext["Body"];
+
+            Assert.That(toWhom, Is.EqualTo(_toWhom));
+            Assert.That(subject, Does.Contain(_subject));
+            Assert.That(body, Does.Contain(_body));
+        }
+
+        #endregion
+
+        #endregion
 
         [AfterScenario]
         public void DisposeWebDriver()

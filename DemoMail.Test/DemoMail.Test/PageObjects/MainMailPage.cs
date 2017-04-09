@@ -44,11 +44,29 @@ namespace DemoMail_Nunit.Test
         [FindsBy(How = How.XPath, Using = "//div[(@class='b-datalist__item__addr' and text() = 'johndoe1990@list.ru')]")]
         private IWebElement _draftTitle;
 
-        [FindsBy(How = How.XPath, Using = "//div[(@class='b-datalist__item__subj' and text() = 'Test')]")]
+        [FindsBy(How = How.XPath, Using = "//div[(@class='b-datalist__item__subj' and text() = 'TestDraft')]")]
         private IWebElement _draftSubject;
 
         [FindsBy(How = How.XPath, Using = "//span[@class='b-datalist__item__subj__snippet' and contains(text(), 'Hello, Mail World!')]")]
         private IWebElement _draftBody;
+
+        [FindsBy(How = How.XPath, Using = "//span[@class='b-toolbar__btn__text' and contains(text(), 'Отправить')]")]
+        private IWebElement _sendMail;
+
+        [FindsBy(How = How.XPath, Using = "//span[@class='message-sent__info']")]
+        private IWebElement _receiver;
+
+        [FindsBy(How = How.XPath, Using = "//span[@class='b-nav__item__text' and text() = 'Отправленные']")]
+        private IWebElement _sendedMail;
+
+        [FindsBy(How = How.XPath, Using = "//div[(@class='b-datalist__item__addr' and text() = 'johndoe1990@list.ru')]")]
+        private IWebElement _sendedTitle;
+
+        [FindsBy(How = How.XPath, Using = "//div[(@class='b-datalist__item__subj' and text() = 'TestSend')]")]
+        private IWebElement _sendedSubject;
+
+        [FindsBy(How = How.XPath, Using = "//span[@class='b-datalist__item__subj__snippet' and contains(text(), 'Hello, this is a message!')]")]
+        private IWebElement _sendedBody;
 
         #endregion
 
@@ -145,6 +163,38 @@ namespace DemoMail_Nunit.Test
             }
         }
 
+        public string Receiver
+        {
+            get
+            {
+                return _receiver.Text;
+            }
+        }
+
+        public string SendedTitle
+        {
+            get
+            {
+                return _sendedTitle.GetAttribute("innerText");
+            }
+        }
+
+        public string SendedSubject
+        {
+            get
+            {
+                return _sendedSubject.GetAttribute("innerText");
+            }
+        }
+
+        public string SendedBody
+        {
+            get
+            {
+                return _sendedBody.GetAttribute("innerText");
+            }
+        }
+
         #endregion
 
         #region Methods
@@ -163,6 +213,18 @@ namespace DemoMail_Nunit.Test
         public void OpenDraft()
         {
             _openDraft.Click();
+            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//div[(@class='b-datalist__item__addr' and text() = 'johndoe1990@list.ru')]")));
+        }
+
+        public void SendMail()
+        {
+            _sendMail.Click();
+            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//div[@class='message-sent__title']")));
+        }
+
+        public void SendedMail()
+        {
+            _sendedMail.Click();
             wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//div[(@class='b-datalist__item__addr' and text() = 'johndoe1990@list.ru')]")));
         }
 
