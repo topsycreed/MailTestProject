@@ -36,6 +36,7 @@ namespace DemoMail_Nunit.Test
         #region Fields
 
         private WebDriverWait wait = new WebDriverWait(WebDriverFactory.Driver, TimeSpan.FromSeconds(10));
+        private WebDriverWait longWait = new WebDriverWait(WebDriverFactory.Driver, TimeSpan.FromSeconds(30));
 
         #endregion
 
@@ -90,7 +91,7 @@ namespace DemoMail_Nunit.Test
         public void SubmitLogin()
         {
             _submitLogin.Click();
-            wait.Until(ExpectedConditions.ElementIsVisible(By.Id("PH_logoutLink")));
+            longWait.Until(ExpectedConditions.ElementIsVisible(By.Id("PH_logoutLink")));
         }
 
         public void SubmitInvalidLogin()
