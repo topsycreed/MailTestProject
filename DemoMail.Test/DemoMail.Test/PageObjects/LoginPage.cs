@@ -78,11 +78,11 @@ namespace DemoMail_Nunit.Test
 
         public void DeselectAuthenticationRemembering()
         {
-            //If attribute exist in HTML then it checked, if not - then not checked and GetAttribute will return null
-            isChecked = (_deselectAuthenticationRemembering.GetAttribute("checked") != null);
+            //wait to avoid exception if Kaspersky block element with his popup message
+            wait.Until(ExpectedConditions.InvisibilityOfElementLocated(By.XPath("//div[text() = 'Включена защита ввода с клавиатуры']")));
 
-            //If checked then click to deselect
-            if (isChecked)
+            //If selected then click to deselect
+            if (_deselectAuthenticationRemembering.Selected)
             {
                 _deselectAuthenticationRemembering.Click();
             }
